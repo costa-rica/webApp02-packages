@@ -37,3 +37,11 @@ class Users(Base, UserMixin):
 
     def __repr__(self):
         return f'Users(id: {self.id}, email: {self.email})'
+
+
+#Build db
+if 'users' in inspect(engine).get_table_names():
+    print('db already exists')
+else:
+    Base.metadata.create_all(engine)
+    print('NEW db created.')
